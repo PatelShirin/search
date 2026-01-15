@@ -26,8 +26,8 @@ function useLanguage() {
       if (e.detail && typeof e.detail === 'string' && e.detail !== language) {
         console.log(`[src/hooks/useLanguage.ts]: Received external locale change to ${e.detail}`);
         setLanguage(e.detail);
-        PageController.getContext().setLocaleLanguage(e.detail);
-        PageController.getContext().setLocaleCountry(locales[e.detail].country);
+        PageController.getContext().setLocaleLanguage(language);
+        PageController.getContext().setLocaleCountry(locales[language].country);
       }
     }
     window.addEventListener('external-locale', handleExternalLocale);
