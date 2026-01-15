@@ -13,7 +13,7 @@ const LocaleSelector = () => {
   return (
     <div className="flex items-center">
       <Globe className="text-gray-400 " />
-      <select className="select cursor-pointer" onChange={handleChange} defaultValue={language}>
+      <select className="select cursor-pointer" onChange={handleChange} value={language}>
         {locales.map((locale) => (
           <option value={locale.value}>{locale.label}</option>
         ))}
