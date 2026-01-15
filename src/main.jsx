@@ -10,6 +10,7 @@ import React, { useEffect } from 'react';
 
 function AppWithLocaleSync() {
 	const appRef = React.useRef();
+    console.log('App initialized with locale sync.');
 	useEffect(() => {
 		function handleLocaleMessage(event) {
 			if (event.data?.type === 'SET_LOCALE' && event.data.locale) {

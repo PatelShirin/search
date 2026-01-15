@@ -24,6 +24,7 @@ function useLanguage() {
   useEffect(() => {
     function handleExternalLocale(e) {
       if (e.detail && typeof e.detail === 'string' && e.detail !== language) {
+        console.log(`[src/hooks/useLanguage.ts]: Received external locale change to ${e.detail}`);
         setLanguage(e.detail);
       }
     }
@@ -31,6 +32,8 @@ function useLanguage() {
     return () => window.removeEventListener('external-locale', handleExternalLocale);
   }, [language, setLanguage]);
 
+  console.info(`[src/hooks/useLanguage.ts]: Current language is ${language}`);
+  console.log(`Available locales: languages = ${Object.keys(locales).join(', ')}`);
   return { language, setLanguage };
 }
 
