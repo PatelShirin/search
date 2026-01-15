@@ -9,6 +9,7 @@ const LocaleSelector = () => {
   const handleChange = (e) => {
     setLanguage(e.target.value);
   };
+  console.log(`[src/components/LocaleSelector/index.jsx]: Current selected language is ${language}`);
   return (
     <div className="flex items-center">
       <Globe className="text-gray-400 " />
