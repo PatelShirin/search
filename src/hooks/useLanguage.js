@@ -26,6 +26,8 @@ function useLanguage() {
       if (e.detail && typeof e.detail === 'string' && e.detail !== language) {
         console.log(`[src/hooks/useLanguage.ts]: Received external locale change to ${e.detail}`);
         setLanguage(e.detail);
+        PageController.getContext().setLocaleLanguage(e.detail);
+        PageController.getContext().setLocaleCountry(locales[e.detail].country);
       }
     }
     window.addEventListener('external-locale', handleExternalLocale);
@@ -33,7 +35,6 @@ function useLanguage() {
   }, [language, setLanguage]);
 
   console.info(`[src/hooks/useLanguage.ts]: Current language is ${language}`);
-  console.log(`Available locales: languages = ${Object.keys(locales).join(', ')}`);
   return { language, setLanguage };
 }
 
