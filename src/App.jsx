@@ -1,6 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
-import Footer from '@/components/Footer/index.jsx';
+// import Footer from '@/components/Footer/index.jsx';
 import Header from '@/components/Header/index.jsx';
 import { LanguageContext } from '@/contexts/languageContext.js';
 import useLanguage from '@/hooks/useLanguage.js';
