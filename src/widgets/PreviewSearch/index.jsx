@@ -1,5 +1,6 @@
-import { useCallback } from 'react';
+import { useCallback, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { XMarkIcon } from "@heroicons/react/24/outline";
 
 import Spinner from '@/widgets/components/Spinner';
 import SuggestionBlock from '@/widgets/components/SuggestionBlock';
@@ -26,9 +27,12 @@ export const PreviewSearchComponent = ({ defaultItemsPerPage = 6 }) => {
   });
   console.log('PreviewSearchComponent render', queryResult);
   const loading = isLoading || isFetching;
+  const inputRef = useRef(null);
+  const [inputValue, setInputValue] = useState('');
   const keyphraseHandler = useCallback(
     (event) => {
       const target = event.target;
+      setInputValue(target.value);
       onKeyphraseChange({ keyphrase: target.value });
     },
     [onKeyphraseChange],
@@ -37,18 +41,45 @@ export const PreviewSearchComponent = ({ defaultItemsPerPage = 6 }) => {
     e.preventDefault();
     const target = e.target.query;
     navigate(`/search?q=${target.value}`);
-    target.value = '';
+    setInputValue('');
+    if (inputRef.current) inputRef.current.value = '';
+  };
+
+  const handleClear = () => {
+    setInputValue('');
+    if (inputRef.current) inputRef.current.value = '';
+    onKeyphraseChange({ keyphrase: '' });
+    inputRef.current && inputRef.current.focus();
   };
   return (
     <PreviewSearch.Root>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="relative w-fit">
         <PreviewSearch.Input
+          ref={inputRef}
           name="query"
-          className="w-[800px] rounded-sm box-border py-1 px-1 focus:outline-solid focus:outline-1 focus:outline-gray-200 dark:focus:outline-gray-900 dark:border-gray-900 border-1 bg-gray-100 dark:bg-gray-800 dark:text-gray-100"
+          value={inputValue}
+          className="w-[800px] rounded-sm box-border py-1 px-1 focus:outline-solid focus:outline-1 focus:outline-gray-200 dark:focus:outline-gray-900 dark:border-gray-900 border-1 bg-gray-100 dark:bg-gray-800 dark:text-gray-100 pr-10"
           onChange={keyphraseHandler}
           autoComplete="off"
           placeholder="Type to search..."
         />
+        {inputValue && (
+          <button
+            type="button"
+            aria-label="Clear search"
+            onClick={handleClear}
+            className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 bg-transparent border-none p-0 m-0 cursor-pointer"
+            tabIndex={0}
+            style={{ outline: 'none', background: 'none' }}
+          >
+            {/* X icon SVG */}
+              {/* <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 20 20">
+                <circle cx="10" cy="10" r="9" stroke="currentColor" strokeWidth="2" fill="white" />
+                <path d="M7 7l6 6M13 7l-6 6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+              </svg> */}
+              <XMarkIcon className="w-5 h-5" />{" "}
+          </button>
+        )}
       </form>
       <PreviewSearch.Content
         ref={widgetRef}
