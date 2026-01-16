@@ -28,6 +28,7 @@ export function DarkmodeSwitch() {
       className="text-gray-400 hover:bg-slate-200 p-1 mx-2 flex items-center justify-center rounded-md dark:hover:bg-slate-800"
       onClick={handleClick}
       aria-label={`Toggle ${isDarkMode ? 'light' : 'dark'} mode`}
+      title={`Toggle ${isDarkMode ? 'light' : 'dark'} mode`}
     >
       {isDarkMode ? <Sun /> : <Moon />}
     </button>
