@@ -10,7 +10,7 @@ const Header = () => {
   return (
     <div className="header-outer">
       <div className="flex items-center">
-        <Link to="/" tabIndex={1} className="mr-6 flex items-center">
+        <Link to="/" tabIndex={1} className="mr-6 flex items-center ml-6">
           <img width={150} height={40} src={src} alt="Chartwell Logo" />
           {/* <Logo /> */}
         </Link>
