@@ -3,7 +3,7 @@
     <img src="https://wwwsitecorecom.azureedge.net/-/media/sitecoresite/images/global/logo/sitecore-logo.svg?la=es-ES&hash=89E5BCF25116F0D8B53F53F0E3D33A0E" alt="RBE logo" target="_blank" width="200" height="165">
   </a>
 </p>
-<h3 align="center">Sitecore Search Starter Kit</h3>
+<h3 align="center">Sitecore Search Starter Kit..</h3>
 
 <p align="center">
  A website built using React + Sitecore Search SDK for React
