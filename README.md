@@ -6,7 +6,7 @@
 <h3 align="center">Sitecore Search Starter Kit..</h3>
 
 <p align="center">
- A website built using React + Sitecore Search SDK for React.
+ A website built using React + Sitecore Search SDK for React
   <br>
   <a href="https://developers.sitecorecloud.io/search-sdk/react/website" target="_blank"><strong>Demo »</strong></a>
   <br>
