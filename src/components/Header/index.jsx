@@ -23,7 +23,7 @@ const Header = () => {
           </div>
           {/* Controls on the right */}
           <div className="flex items-center ml-4">
-            <DarkmodeSwitch />
+            {/* <DarkmodeSwitch /> */}
             <LocaleSelector />
           </div>
         </div>

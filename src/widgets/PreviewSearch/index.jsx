@@ -71,6 +71,7 @@ export const PreviewSearchComponent = ({ defaultItemsPerPage = 6 }) => {
             className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 bg-transparent border-none p-0 m-0 cursor-pointer"
             tabIndex={0}
             style={{ outline: 'none', background: 'none' }}
+            title="Clear Search"
           >
             <XMarkIcon className="w-5 h-5" />{" "}
           </button>
